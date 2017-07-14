@@ -1,0 +1,14 @@
+env:
+  global:
+    - LANG:tr_TR.UTF-8
+
+language: php
+
+php:
+    - 7.0
+
+before_script:
+    - phpenv rehash
+    - composer install
+
+script: phpunit jwtclasstest.php
