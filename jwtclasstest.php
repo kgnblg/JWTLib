@@ -23,5 +23,13 @@ class JwtClassTest extends TestCase
 
     $this->assertEquals($token, $cikti);
   }
+
+  public function testDecryptToken(){
+    $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2FnYW4gQmFsZ2EiLCJleHAiOiIxMC4xMC4xMCJ9.84b6f588cc75c766342703adccd757198b57fb53cbb090efae6a81c630d33ddd";
+    $jwt = new JwtClass();
+    $jwt->setToken($token);
+    $this->assertEquals("HS256",$jwt->decryptToken()['header']->alg);
+    $this->assertEquals("Kagan Balga",$jwt->decryptToken()['payload']->name);
+  }
 }
 ?>
